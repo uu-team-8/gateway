@@ -50,10 +50,11 @@ def main():
     else:
         ser = select_and_open_port(com_ports)
 
+    print("Started reading data")
     while(ser.is_open):
         try:
-            print(ser.readline())
-        # except TypeError:
+            raw_data = ser.readline().decode('utf-8').rstrip()
+            print(raw_data)
         except Exception as e:
             print("bad read")
             break
